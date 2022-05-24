@@ -1,0 +1,10 @@
+---      
+kind: Service
+apiVersion: v1               
+metadata:
+  labels:
+    app: longhorn-ui
+  namespace: longhorn-system
+  name: longhorn-frontend
+spec:    
+  type: LoadBalancer
