@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: taskd
+  name: taskd
+  namespace: taskwarrior
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: taskd
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: taskd
+    spec:
+      containers:
+        - env:
+            - name: CERT_CN
+              value: taskd
+            - name: CERT_COUNTRY
+              value: AT
+            - name: CERT_LOCALITY
+              value: Hittisau
+            - name: CERT_ORGANIZATION
+              value: FastIT
+            - name: CERT_STATE
+              value: Vorarlberg
+          image: x4121/taskd:latest
+          name: taskserver
+          ports:
+            - containerPort: 53589
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/taskd
+              name: taskd-claim0
+      restartPolicy: Always
+      volumes:
+        - name: taskd-claim0
+          persistentVolumeClaim:
+            claimName: taskd-claim0
+status: {}
