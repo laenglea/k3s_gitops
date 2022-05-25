@@ -6,4 +6,5 @@ resources:
   - https://raw.githubusercontent.com/longhorn/longhorn/v1.2.4/deploy/longhorn.yaml
 patchesStrategicMerge: 
   - service.yaml
+  - configmap.yaml
 
