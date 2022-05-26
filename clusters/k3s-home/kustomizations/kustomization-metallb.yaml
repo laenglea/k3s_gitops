@@ -9,7 +9,7 @@ resources:
   - https://raw.githubusercontent.com/metallb/metallb/v0.12.1/manifests/metallb.yaml
 spec:
   interval: 15m
-  path: metallb
+  path: ./clusters/metallb
   prune: true # remove any elements later removed from the above path
   timeout: 2m # if not set, this defaults to interval duration, which is 1h
   sourceRef:
