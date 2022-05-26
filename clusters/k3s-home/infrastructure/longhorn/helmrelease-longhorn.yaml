@@ -15,5 +15,5 @@ spec:
         name: longhorn
   interval: 5m0s
   releaseName: longhorn
-  targetNamespace: longhorn-system
+  releaseNamespace: longhorn-system
 
