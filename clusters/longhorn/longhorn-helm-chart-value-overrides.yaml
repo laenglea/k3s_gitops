@@ -53,7 +53,6 @@ data:
     
     service:
       ui:
-        #Changed to Loadbalancer
         type: LoadBalancer
         nodePort: null
       manager:
