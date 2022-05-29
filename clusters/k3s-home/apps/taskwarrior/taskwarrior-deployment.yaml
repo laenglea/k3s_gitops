@@ -10,7 +10,7 @@ metadata:
   name: taskd
   namespace: taskwarrior
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       io.kompose.service: taskd
@@ -27,16 +27,6 @@ spec:
     spec:
       containers:
         - env:
-            - name: CERT_CN
-              value: taskd
-            - name: CERT_COUNTRY
-              value: AT
-            - name: CERT_LOCALITY
-              value: Hittisau
-            - name: CERT_ORGANIZATION
-              value: FastIT
-            - name: CERT_STATE
-              value: Vorarlberg
           image: x4121/taskd:latest
           name: taskserver
           ports:
