@@ -16,4 +16,7 @@ spec:
   interval: 5m0s
   releaseName: longhorn
   targetNamespace: longhorn-system
-
+  valuesFrom:
+  - kind: ConfigMap
+    name: longhorn-helm-chart-value-overrides
+    valuesKey: values.yaml
