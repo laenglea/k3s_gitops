@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: longhorn-helm-chart-value-overrides
-  namespace: longhorn-system
+  namespace: flux-system
 data:
   values.yaml: |-
     # Default values for longhorn.
