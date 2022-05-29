@@ -25,7 +25,13 @@ data:
     #
     # Refer to https://metallb.universe.tf/configuration/ for
     # available options.
-    configInline: {}
+    configInline:
+      address-pools:
+      - name: default
+        protocol: layer2
+        addresses:
+        - 172.16.120.200-172.16.120.210
+
     
     rbac:
       # create specifies whether to install and use RBAC rules.
