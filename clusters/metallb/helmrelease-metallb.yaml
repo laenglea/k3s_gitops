@@ -11,7 +11,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: metallb
+        name: bitnami 
   interval: 5m0s
   releaseName: metallb
   targetNamespace: metallb-system
