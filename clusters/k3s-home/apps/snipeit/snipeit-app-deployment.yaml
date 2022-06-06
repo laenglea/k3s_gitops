@@ -7,7 +7,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: snipe
+      app: snipeit
       tier: frontend
   strategy:
     type: Recreate
