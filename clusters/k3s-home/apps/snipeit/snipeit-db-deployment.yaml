@@ -45,6 +45,7 @@ spec:
           name: snipeit-db
           ports:
             - containerPort: 3306
+              name: "snipeit-db"
           resources: {}
           volumeMounts:
             - mountPath: /config
