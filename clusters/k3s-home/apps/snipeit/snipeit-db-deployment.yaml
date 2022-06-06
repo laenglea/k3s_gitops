@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.26.0 (40646f47)
   creationTimestamp: null
   labels:
-    io.kompose.service: snipeit-db
-  name: snipeit-db
+    io.kompose.service: snipeitdb
+  name: snipeitdb
   namespace: snipeit
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: snipeit-db
+      io.kompose.service: snipeitdb
   strategy:
     type: Recreate
   template:
@@ -23,9 +23,9 @@ spec:
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
-        io.kompose.service: snipeit-db
+        io.kompose.service: snipeitdb
     spec:
-      hostname: snipeit-db
+      hostname: snipeitdb
       containers:
         - env:
             - name: MYSQL_DATABASE
@@ -43,7 +43,7 @@ spec:
             - name: TZ
               value: Europe/Vienna
           image: lscr.io/linuxserver/mariadb:latest
-          name: snipeit-db
+          name: snipeitdb
           ports:
             - containerPort: 3306
           resources: {}
