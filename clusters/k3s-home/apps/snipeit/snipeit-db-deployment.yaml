@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: snipeit
   name: snipeitdb
   namespace: snipeit
 spec:
@@ -10,14 +8,14 @@ spec:
   selector:
     matchLabels:
       app: snipeit
-      tier: snipedb
+      tier: snipeitdb
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: snipeit
-        tier: snipedb
+        tier: snipeitdb
     spec:
       containers:
         - env:
