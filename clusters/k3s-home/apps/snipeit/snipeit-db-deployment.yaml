@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: snipeitdb
+  labels:
+    app: snipeit
   namespace: snipeit
 spec:
   replicas: 1
