@@ -11,7 +11,7 @@ metadata:
   namespace: snipeit
 spec:
   ports:
-      port: 3306
+    port: 3306
   selector:
     app: snipeit
     tier: snipeitdb
