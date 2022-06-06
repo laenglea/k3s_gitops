@@ -43,6 +43,8 @@ spec:
               value: Europe/Vienna
           image: lscr.io/linuxserver/mariadb:latest
           name: snipeit-db
+          ports:
+            - containerPort: 3306
           resources: {}
           volumeMounts:
             - mountPath: /config
