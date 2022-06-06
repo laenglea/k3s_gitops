@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: snipeit-app
+  name: snipeit-app
+  namespace: snipeit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: snipeit-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: snipeit-app
+    spec:
+      containers:
+        - env:
+            - name: APP_URL
+              value: http://172.16.120.209:80
+            - name: MYSQL_DATABASE
+              value: snipeit
+            - name: MYSQL_PASSWORD
+              value: soasdlfkjasdfhasdlfkjchangeme
+            - name: MYSQL_PORT_3306_TCP_ADDR
+              value: snipeit-db
+            - name: MYSQL_PORT_3306_TCP_PORT
+              value: "3306"
+            - name: MYSQL_USER
+              value: snipeit
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: Europe/Vienna
+          image: lscr.io/linuxserver/snipe-it:latest
+          name: snipeit-app
+          ports:
+            - containerPort: 80
+          resources: {}
+          volumeMounts:
+            - mountPath: /config
+              name: snipeit-app-claim0
+      restartPolicy: Always
+      volumes:
+        - name: snipeit-app-claim0
+          persistentVolumeClaim:
+            claimName: snipeit-app-claim0
+status: {}
