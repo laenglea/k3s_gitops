@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snipeitdb
+  labels:
+    app: snipeit
+  namespace: snipeit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snipeit
+      tier: snipeitdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: snipeit
+        tier: snipeitdb
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_DATABASE
+              value: snipeit
+            - name: MYSQL_PASSWORD
+              value: soasdlfkjasdfhasdlfkjchangeme
+            - name: MYSQL_ROOT_PASSWORD
+              value: laksjdfasdlfkhjasdfkihasdf111kjasdflkjasdf
+            - name: MYSQL_USER
+              value: snipeit
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: Europe/Vienna
+          image: lscr.io/linuxserver/mariadb:latest
+          name: snipeitdb
+          ports:
+            - containerPort: 3306
+          resources: {}
+          volumeMounts:
+            - mountPath: /config
+              name: snipeit-db-claim0
+      restartPolicy: Always
+      volumes:
+        - name: snipeit-db-claim0
+          persistentVolumeClaim:
+            claimName: snipeit-db-claim0
+status: {}
