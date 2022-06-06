@@ -25,6 +25,7 @@ spec:
       labels:
         io.kompose.service: snipeit-db
     spec:
+      hostname: snipeit-db
       containers:
         - env:
             - name: MYSQL_DATABASE
@@ -45,7 +46,6 @@ spec:
           name: snipeit-db
           ports:
             - containerPort: 3306
-              name: "snipeit-db"
           resources: {}
           volumeMounts:
             - mountPath: /config
